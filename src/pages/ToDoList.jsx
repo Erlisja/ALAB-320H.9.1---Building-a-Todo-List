@@ -2,170 +2,153 @@ import React from "react";
 import { useState, useReducer } from "react";
 import { Link } from "react-router";
 import TextInput from "../components/TextInput";
-import AddButton from "../components/AddButton";
-import { toDoListReducer } from "../reducer/toDoListReducer";
+import Button from "../components/Button";
+import toDoListReducer from "../reducer/toDoListReducer";
+import TaskEntry from "../components/TaskEntry";
 
 const initialState = [
   {
     userId: 1,
     id: 1,
-    title: "delectus aut autem",
+    title: "Go to the store",
     completed: false,
   },
   {
     userId: 1,
     id: 2,
-    title: "quis ut nam facilis et officia qui",
+    title: "Pick up the kids",
     completed: false,
   },
   {
     userId: 1,
     id: 3,
-    title: "fugiat veniam minus",
+    title: "Do the laundry",
     completed: false,
   },
   {
     userId: 1,
     id: 4,
-    title: "et porro tempora",
+    title: "Clean the house",
     completed: true,
   },
   {
     userId: 1,
     id: 5,
-    title: "laboriosam mollitia et enim quasi adipisci quia provident illum",
+    title: "Walk the dog",
     completed: false,
   },
   {
     userId: 1,
     id: 6,
-    title: "qui ullam ratione quibusdam voluptatem quia omnis",
+    title: "Take out the trash",
     completed: false,
   },
   {
     userId: 1,
     id: 7,
-    title: "illo expedita consequatur quia in",
+    title: "Mow the lawn",
     completed: false,
   },
   {
     userId: 1,
     id: 8,
-    title: "quo adipisci enim quam ut ab",
+    title: "Wash the car",
     completed: true,
   },
   {
     userId: 1,
     id: 9,
-    title: "molestiae perspiciatis ipsa",
+    title: "Get the oil changed",
     completed: false,
   },
   {
     userId: 1,
     id: 10,
-    title: "illo est ratione doloremque quia maiores aut",
+    title: "Go to the gym",
     completed: true,
   },
   {
     userId: 1,
     id: 11,
-    title: "vero rerum temporibus dolor",
+    title: "Read a book",
     completed: true,
   },
   {
     userId: 1,
     id: 12,
-    title: "ipsa repellendus fugit nisi",
+    title: "Write some code",
     completed: true,
   },
   {
     userId: 1,
     id: 13,
-    title: "et doloremque nulla",
+    title: "Take a nap",
     completed: false,
   },
   {
     userId: 1,
     id: 14,
-    title: "repellendus sunt dolores architecto voluptatum",
+    title: "Go to the beach",
     completed: true,
   },
   {
     userId: 1,
     id: 15,
-    title: "ab voluptatum amet voluptas",
+    title: "Watch a movie",
     completed: true,
   },
   {
     userId: 1,
     id: 16,
-    title: "accusamus eos facilis sint et aut voluptatem",
+    title: "Play some video games",
     completed: true,
   },
   {
     userId: 1,
     id: 17,
-    title: "quo laboriosam deleniti aut qui",
+    title: "Go for a run",
     completed: true,
   },
   {
     userId: 1,
     id: 18,
-    title: "dolorum est consequatur ea mollitia in culpa",
+    title: "Go for a walk",
     completed: false,
   },
   {
     userId: 1,
     id: 19,
-    title: "molestiae ipsa aut voluptatibus pariatur dolor nihil",
+    title: "Go for a bike ride",
     completed: true,
   },
   {
     userId: 1,
     id: 20,
-    title: "ullam nobis libero sapiente ad optio sint",
+    title: "Send an email",
     completed: true,
   },
 ];
 
 function ToDoList() {
-  const [task, setTask] = useState("");
-  const [todoList, dispatch] = useReducer(toDoListReducer, initialState);
+  const [newTask, setNewTask] = useState("");
+  const [state, dispatch] = useReducer(toDoListReducer, initialState);
 
-    const taskList =todoList.map((task) => {
-        return(
-            <div key={task.id}>
-                <p>{task.title}</p>
-            </div>
-
-        )
-    })
-
-  // function HandleInputChange(){
-  // }
-
-  // function addTask(){}
-
-  // function deleteTask(){}
-
-  // function editTask(){}
-
-  // function toggleTask(){}
-
-  // function moveTaskUp(){}
-
-  // function moveTaskDown(){}
+  const taskList = state.map((task, index) => (
+    <TaskEntry key={index} task={task} index={index} dispatch={dispatch} />
+  ));
 
   return (
     <div>
       <Link to="/">Home</Link> <br />
       <div className="task-div">
-        <h1>ToDoList</h1>
-        Create a new Task: <br />
-        <TextInput state={task} setState={setTask} />{" "}
-        <AddButton type="ADD_TASK" payload={{ task }} dispatch={dispatch}>
+        <h1>To Do List</h1>
+        <h2>Create a new Task:</h2>
+        <div >
+        <TextInput state={newTask} setState={setNewTask} />{" "}
+        <Button  type="ADD_TASK" payload={{ newTask }} dispatch={dispatch}>
           Add Task
-        </AddButton>{" "}
+        </Button>{" "}
+        </div>
         <br /> <br />
       </div>
       <div>{taskList}</div>

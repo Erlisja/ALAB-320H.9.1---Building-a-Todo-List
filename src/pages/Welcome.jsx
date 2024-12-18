@@ -5,9 +5,9 @@ function Welcome() {
 
 
   return (
-    <div>
+    <div className='welcome-div'>
         <h1>Welcome to your TO DO LIST</h1>
-        <Link to="/todo">To Do List</Link>
+        <Link to="/todo">TASKS</Link>
         
         </div>
   )
