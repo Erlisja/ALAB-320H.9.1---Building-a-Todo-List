@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "./Button";
+import Button2 from "./Button2";
 function TaskEntry({ task, index, dispatch }) {
   return (
     <>
@@ -13,7 +14,8 @@ function TaskEntry({ task, index, dispatch }) {
         />
         <label style={{fontSize: '1.5em'  }} htmlFor={`task-${index}`}>{task.title}</label>
        
-        <button className="move-up-button"
+        <Button2 dispatch={dispatch} type='MOVE_TASK_UP' payload={{index}} >  ↑ </Button2>
+        {/* <button className="move-up-button"
           onClick={() =>
             dispatch({
               type: "MOVE_TASK_UP",
@@ -22,8 +24,10 @@ function TaskEntry({ task, index, dispatch }) {
           }
         >
           ↑
-        </button>
-        <button className="move-up-button"
+        </button> */}
+         <Button2 dispatch={dispatch} type='MOVE_TASK_DOWN' payload={{index}} > ↓  </Button2>
+
+        {/* <button className="move-up-button"
           onClick={() =>
             dispatch({
               type: "MOVE_TASK_DOWN",
@@ -32,7 +36,7 @@ function TaskEntry({ task, index, dispatch }) {
           }
         >
           ↓
-        </button>
+        </button> */}
 
         <Button dispatch={dispatch} type="DELETE_TASK" payload={{ index }} >
           Delete
