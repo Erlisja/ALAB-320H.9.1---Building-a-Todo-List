@@ -132,7 +132,7 @@ a:hover {
 }
 
 /* Style the move-up button */
-.move-up-button {
+/* .move-up-button {
   padding-bottom: 10px;
   color: rgb(255, 255, 255);
   text-align: center;
@@ -146,15 +146,18 @@ a:hover {
   font-size: 26px;
   line-height: 20px;
   transition: background-color 0.3s, transform 0.3s;
-}
+} */
 
-.move-up-button:hover {
+/* .move-up-button:hover {
   background-color: #f533ab;
   color: white;
-  transform: scale(1.1); /* Slightly enlarge the button on hover */
-}
+  transform: scale(1.1); 
+ */
 
-.delete-button{
-  background-color: #ee3737;
+.custom-button.delete-button{
+  background-color: #ee3737 !important;
 }
-
+.custom-button.delete-button:disabled{
+  background-color: #8b8b8b !important;
+  cursor: not-allowed;
+}

@@ -145,7 +145,7 @@ function ToDoList() {
         <h2>Create a new Task:</h2>
         <div >
         <TextInput state={newTask} setState={setNewTask} />{" "}
-        <Button  type="ADD_TASK" payload={{ newTask }} dispatch={dispatch}>
+        <Button className={'custom-button'}  type="ADD_TASK" payload={{ newTask }} dispatch={dispatch}>
           Add Task
         </Button>{" "}
         </div>

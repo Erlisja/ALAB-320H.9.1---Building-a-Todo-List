@@ -39,6 +39,10 @@ function TaskEntry({ task, index, dispatch }) {
           ↓
         </button> */}
 
+<Button dispatch={dispatch} type="DELETE_TASK" payload={{ index }} disabled={!task.completed} className={'custom-button delete-button'} >
+          Delete
+        </Button>
+
 <button
         className="custom-button"
         onClick={() => {
