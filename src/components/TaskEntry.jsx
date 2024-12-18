@@ -2,6 +2,7 @@ import React from "react";
 import Button from "./Button";
 import Button2 from "./Button2";
 function TaskEntry({ task, index, dispatch }) {
+  
   return (
     <>
       <div className="task-entry">
@@ -38,9 +39,25 @@ function TaskEntry({ task, index, dispatch }) {
           ↓
         </button> */}
 
-        <Button dispatch={dispatch} type="DELETE_TASK" payload={{ index }} >
-          Delete
-        </Button>
+<button
+        className="edit-button"
+        onClick={() => {
+          const newTask = window.prompt(
+            "Enter the new task title:",
+            task.title
+          );
+          if (newTask !== null && newTask.trim() !== "") {
+            dispatch({
+              type: "EDIT_TASK",
+              payload: { index, newTask },
+            });
+          }
+        }}
+      >
+        Edit
+      </button>
+
+
       </div>
     </>
   );
