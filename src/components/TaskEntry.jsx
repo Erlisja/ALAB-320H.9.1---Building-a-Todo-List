@@ -40,7 +40,7 @@ function TaskEntry({ task, index, dispatch }) {
         </button> */}
 
 <button
-        className="edit-button"
+        className="custom-button"
         onClick={() => {
           const newTask = window.prompt(
             "Enter the new task title:",
